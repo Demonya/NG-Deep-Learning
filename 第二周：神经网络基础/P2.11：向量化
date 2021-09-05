@@ -1,0 +1,35 @@
+向量化通常是消除代码中显示for循环语句的技巧，在深度学习安全领域、深度学习练习中你经常发现在训练大数据集时深度学习算法表现才更加优越。因此代码运行的速度是非常非常重要的。否则话费很长时间去运行代码需要等待非常长的时间去得到结果。
+
+所以在深度学习领域,完成向量化已经成为一个十分关键的技巧。
+
+什么事向量化？
+
+在logistic回归中,需要去计算 [公式] , [公式] 是列向量, [公式] 也是列向量。
+
+非向量化方式： [公式]
+
+[公式]
+
+[公式]
+
+向量化的方式会非常直接： [公式]
+
+通过代码对比使用向量化与非向量化的计算耗时：
+
+# 向量化
+tic = time.time()
+c = np.dot(a, b)
+toc = time.time()
+print("Vectorized version C is", c)
+print("Vectorized version:" + str(1000*(toc-tic)) + "ms")
+
+# For循环
+c = 0
+tic = time.time()
+for i in range(1000000):
+c += a[i] * b[i]
+toc = time.time()
+print("For Loop C is", c)
+print("For Loop:" + str(1000*(toc-tic)) + "ms")
+
+因公式格式，完成博文详见知乎：https://zhuanlan.zhihu.com/p/407009750
